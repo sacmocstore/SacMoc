@@ -847,34 +847,73 @@ let currentProduct = null;
 
 function renderProducts(filter="all"){
   productsEl.innerHTML = "";
+
   products
     .filter(p => filter === "all" || p.region === filter)
     .forEach(p => {
+
       const card = document.createElement("article");
       card.className = "card";
+
+      // CHỈ ÁO TÀY DÙNG ẢNH THẬT
+      let imageHTML = "";
+
+      if (p.id === "tay") {
+        imageHTML = `
+          <img 
+            src="images/ao-tay.jpg" 
+            alt="Áo Tày"
+            style="width:100%;height:100%;object-fit:cover;display:block;"
+          >
+        `;
+      } else {
+        imageHTML = `
+          <div class="image-placeholder">
+            <div class="mini-shirt"></div>
+            <small>Ảnh sản phẩm sẽ được cập nhật</small>
+          </div>
+        `;
+      }
+
       card.innerHTML = `
         <div class="product-image">
           <span class="badge">CULTURAL STORY</span>
-          <div class="image-placeholder">
-  <img src="images/ao-${p.id}.jpg" alt="${p.name}">
-</div>
+
+          ${imageHTML}
+
         </div>
+
         <div class="card-body">
+
           <div class="group">${p.group}</div>
+
           <h3>${p.name}</h3>
+
           <p>${p.desc}</p>
+
           <div class="card-bottom">
+
             <span class="price">Liên hệ</span>
-            <button class="story-btn" onclick="openStory('${p.id}')">Khám phá câu chuyện →</button>
+
+            <button 
+              class="story-btn" 
+              onclick="openStory('${p.id}')"
+            >
+              Khám phá câu chuyện →
+            </button>
+
           </div>
+
         </div>
       `;
-      card.querySelector(".product-image").addEventListener("click",()=>openStory(p.id));
+
+      card
+        .querySelector(".product-image")
+        .addEventListener("click", () => openStory(p.id));
+
       productsEl.appendChild(card);
     });
 }
-
-document.querySelectorAll(".filter").forEach(btn=>{
   btn.addEventListener("click",()=>{
     document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
