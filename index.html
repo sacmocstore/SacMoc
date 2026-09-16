@@ -1,1062 +1,942 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Sắc Mộc | Câu chuyện văn hóa dân tộc Tày</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Georgia, "Times New Roman", serif;
-            background: #f3eee5;
-            color: #25251f;
-            line-height: 1.7;
-        }
-
-        /* ================= HEADER ================= */
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 20px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(20, 38, 34, 0.94);
-            backdrop-filter: blur(10px);
-        }
-
-        .logo {
-            color: #e8d7ad;
-            font-size: 28px;
-            font-weight: bold;
-            letter-spacing: 3px;
-        }
-
-        .logo span {
-            display: block;
-            font-family: Arial, sans-serif;
-            font-size: 9px;
-            letter-spacing: 4px;
-            color: #c6b58a;
-            margin-top: -4px;
-        }
-
-        nav {
-            display: flex;
-            gap: 30px;
-        }
-
-        nav a {
-            color: #f5f0e6;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            font-size: 13px;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #d5b978;
-        }
-
-        /* ================= HERO ================= */
-
-        .hero {
-            min-height: 100vh;
-            background:
-                linear-gradient(
-                    rgba(18, 38, 34, 0.72),
-                    rgba(18, 38, 34, 0.84)
-                ),
-                radial-gradient(
-                    circle at 20% 20%,
-                    #6c7562,
-                    #243d35 45%,
-                    #132620 100%
-                );
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 20px 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border: 1px solid rgba(232, 215, 173, 0.25);
-            border-radius: 50%;
-            animation: rotate 30s linear infinite;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .small-title {
-            font-family: Arial, sans-serif;
-            color: #d8c28d;
-            letter-spacing: 5px;
-            font-size: 12px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-size: clamp(48px, 8vw, 100px);
-            color: #f5efe3;
-            line-height: 1;
-            margin-bottom: 25px;
-            font-weight: normal;
-        }
-
-        .hero h1 span {
-            color: #d7bd82;
-        }
-
-        .hero p {
-            max-width: 650px;
-            margin: auto;
-            color: #ddd8cc;
-            font-size: 18px;
-        }
-
-        .hero-button {
-            display: inline-block;
-            margin-top: 40px;
-            padding: 14px 30px;
-            border: 1px solid #d7bd82;
-            color: #e9d7a9;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            letter-spacing: 2px;
-            transition: 0.3s;
-        }
-
-        .hero-button:hover {
-            background: #d7bd82;
-            color: #19332d;
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* ================= SECTION ================= */
-
-        section {
-            padding: 110px 8%;
-        }
-
-        .section-label {
-            font-family: Arial, sans-serif;
-            font-size: 11px;
-            letter-spacing: 4px;
-            color: #8a7651;
-            margin-bottom: 15px;
-        }
-
-        .section-title {
-            font-size: clamp(35px, 5vw, 58px);
-            font-weight: normal;
-            line-height: 1.15;
-            margin-bottom: 25px;
-            color: #24352e;
-        }
-
-        .section-intro {
-            max-width: 700px;
-            color: #666158;
-            font-size: 17px;
-        }
-
-        /* ================= STORY ================= */
-
-        .story {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .story-art {
-            min-height: 500px;
-            background:
-                linear-gradient(
-                    145deg,
-                    #243e36,
-                    #60705b
-                );
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .story-art::before {
-            content: "TÀY";
-            font-size: 130px;
-            color: rgba(236, 218, 177, 0.08);
-            letter-spacing: 15px;
-        }
-
-        .story-art::after {
-            content: "";
-            position: absolute;
-            width: 70%;
-            height: 70%;
-            border: 1px solid rgba(235, 216, 171, 0.35);
-        }
-
-        .story-text p {
-            margin-bottom: 20px;
-            color: #5c5a52;
-        }
-
-        /* ================= CARDS ================= */
-
-        .cards {
-            margin-top: 60px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .card {
-            background: #e8e0d2;
-            padding: 45px 35px;
-            min-height: 330px;
-            position: relative;
-            transition: 0.4s;
-            border-bottom: 3px solid transparent;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-bottom: 3px solid #9b8352;
-        }
-
-        .card-number {
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            color: #9b8352;
-            letter-spacing: 2px;
-        }
-
-        .card h3 {
-            font-size: 28px;
-            font-weight: normal;
-            margin: 35px 0 15px;
-            color: #263c34;
-        }
-
-        .card p {
-            color: #6b675f;
-        }
-
-        .card a {
-            display: inline-block;
-            margin-top: 25px;
-            text-decoration: none;
-            color: #806a42;
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            letter-spacing: 1px;
-        }
-
-        /* ================= TRADITION ================= */
-
-        .dark-section {
-            background: #1b302a;
-            color: #f2eadb;
-        }
-
-        .dark-section .section-title {
-            color: #f2eadb;
-        }
-
-        .dark-section .section-intro {
-            color: #bcb9ae;
-        }
-
-        .tradition-grid {
-            margin-top: 60px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        .tradition-item {
-            border: 1px solid rgba(232, 215, 173, 0.2);
-            padding: 45px;
-            min-height: 260px;
-            transition: 0.3s;
-        }
-
-        .tradition-item:hover {
-            background: rgba(255,255,255,0.04);
-            transform: translateY(-5px);
-        }
-
-        .tradition-item h3 {
-            color: #d7bd82;
-            font-size: 30px;
-            font-weight: normal;
-            margin-bottom: 15px;
-        }
-
-        .tradition-item p {
-            color: #c5c2b8;
-        }
-
-        /* ================= CLOTHING ================= */
-
-        .clothing {
-            display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .clothing-visual {
-            min-height: 600px;
-            background:
-                linear-gradient(
-                    160deg,
-                    #182f2a,
-                    #405b4d
-                );
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .cloth-shape {
-            width: 230px;
-            height: 390px;
-            background: #203f38;
-            position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-        }
-
-        .cloth-shape::before {
-            content: "";
-            position: absolute;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: #f0e9da;
-            left: 80px;
-            top: -35px;
-        }
-
-        .cloth-pattern {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0.7;
-            background:
-                repeating-linear-gradient(
-                    45deg,
-                    transparent 0,
-                    transparent 25px,
-                    rgba(213, 189, 130, 0.25) 26px,
-                    transparent 27px
-                );
-        }
-
-        .clothing-list {
-            margin-top: 40px;
-        }
-
-        .clothing-list div {
-            padding: 20px 0;
-            border-bottom: 1px solid #d2cabb;
-        }
-
-        .clothing-list strong {
-            display: block;
-            color: #263c34;
-            margin-bottom: 5px;
-        }
-
-        /* ================= FABRIC ================= */
-
-        .fabric-section {
-            background: #ded5c5;
-        }
-
-        .fabric-process {
-            margin-top: 60px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-
-        .process {
-            padding: 35px 25px;
-            background: #eee8dc;
-            min-height: 220px;
-        }
-
-        .process span {
-            font-family: Arial, sans-serif;
-            font-size: 11px;
-            color: #92784a;
-            letter-spacing: 2px;
-        }
-
-        .process h3 {
-            margin: 25px 0 10px;
-            color: #273d35;
-            font-size: 22px;
-            font-weight: normal;
-        }
-
-        .process p {
-            color: #6c675e;
-            font-size: 14px;
-        }
-
-        /* ================= QUOTE ================= */
-
-        .quote {
-            min-height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: #243d35;
-        }
-
-        .quote-content {
-            max-width: 850px;
-        }
-
-        .quote-mark {
-            font-size: 80px;
-            color: #cdb47d;
-            line-height: 0.5;
-        }
-
-        .quote h2 {
-            color: #f1eadc;
-            font-size: clamp(35px, 5vw, 60px);
-            font-weight: normal;
-            line-height: 1.25;
-            margin: 40px 0;
-        }
-
-        .quote p {
-            color: #bcbab0;
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            letter-spacing: 3px;
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            background: #13241f;
-            color: #aaa79d;
-            padding: 60px 8%;
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        footer h2 {
-            color: #e1d3b4;
-            font-size: 25px;
-            font-weight: normal;
-            letter-spacing: 3px;
-        }
-
-        footer p {
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            margin-top: 10px;
-        }
-
-        .copyright {
-            text-align: right;
-        }
-
-        /* ================= MOBILE ================= */
-
-        @media (max-width: 850px) {
-
-            header {
-                padding: 15px 5%;
-            }
-
-            .logo {
-                font-size: 22px;
-            }
-
-            nav {
-                display: none;
-            }
-
-            section {
-                padding: 80px 6%;
-            }
-
-            .story,
-            .clothing {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
-
-            .tradition-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .fabric-process {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .story-art,
-            .clothing-visual {
-                min-height: 400px;
-            }
-
-            footer {
-                flex-direction: column;
-            }
-
-            .copyright {
-                text-align: left;
-            }
-        }
-
-        @media (max-width: 500px) {
-
-            .hero h1 {
-                font-size: 52px;
-            }
-
-            .hero p {
-                font-size: 15px;
-            }
-
-            .fabric-process {
-                grid-template-columns: 1fr;
-            }
-
-            .tradition-item {
-                padding: 30px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sắc Mộc — Nối dài di sản bằng công nghệ</title>
+<meta name="description" content="Sắc Mộc — Áo phông lấy cảm hứng từ văn hóa các dân tộc Việt Nam, kết nối câu chuyện văn hóa với công nghệ NFC.">
+
+<style>
+:root{
+  --bg:#f7f3ec;
+  --paper:#fffdf9;
+  --ink:#20352d;
+  --muted:#6c756f;
+  --green:#183c31;
+  --green2:#285846;
+  --brown:#9a6b42;
+  --line:#e5ded2;
+  --white:#fff;
+  --shadow:0 18px 50px rgba(28,48,40,.10);
+  --radius:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+
+.container{width:min(1180px,92%);margin:auto}
+
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,253,249,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(229,222,210,.8);
+}
+.nav{
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+.logo{
+  font-family:Georgia,serif;
+  font-size:27px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:var(--green);
+}
+.logo small{
+  display:block;
+  font-family:Arial,sans-serif;
+  font-size:9px;
+  letter-spacing:3px;
+  color:var(--brown);
+  margin-top:-4px;
+}
+nav{display:flex;gap:28px;align-items:center}
+nav a{font-size:14px;color:#405149;font-weight:600}
+nav a:hover{color:var(--brown)}
+.nav-btn{
+  border:1px solid var(--green);
+  padding:10px 17px;
+  border-radius:999px;
+  background:var(--green);
+  color:white;
+}
+
+/* HERO */
+.hero{
+  min-height:650px;
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(154,107,66,.18),transparent 28%),
+    radial-gradient(circle at 15% 80%,rgba(40,88,70,.13),transparent 30%),
+    var(--bg);
+}
+.hero:before,.hero:after{
+  content:"";
+  position:absolute;
+  border:1px solid rgba(154,107,66,.20);
+  border-radius:50%;
+}
+.hero:before{width:520px;height:520px;right:-160px;top:-180px}
+.hero:after{width:360px;height:360px;left:-180px;bottom:-160px}
+.hero-inner{
+  width:min(1180px,92%);
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:60px;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+.eyebrow{
+  color:var(--brown);
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:18px;
+}
+.hero h1{
+  font-family:Georgia,serif;
+  font-size:clamp(48px,7vw,82px);
+  line-height:.98;
+  margin-bottom:24px;
+  color:var(--green);
+}
+.hero h1 span{color:var(--brown)}
+.hero p{
+  max-width:590px;
+  color:#5e6962;
+  font-size:17px;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{
+  border:none;
+  padding:14px 22px;
+  border-radius:999px;
+  font-weight:700;
+  transition:.2s;
+}
+.btn-primary{background:var(--green);color:white}
+.btn-primary:hover{background:var(--green2);transform:translateY(-2px)}
+.btn-light{background:white;border:1px solid var(--line);color:var(--green)}
+.hero-visual{
+  min-height:470px;
+  border-radius:40px;
+  background:linear-gradient(145deg,#e8e0d3,#d2c4b0);
+  position:relative;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero-shirt{
+  width:260px;
+  height:330px;
+  background:linear-gradient(145deg,#f8f5ef,#ded8cb);
+  clip-path:polygon(25% 8%,39% 0,61% 0,75% 8%,94% 23%,78% 39%,70% 29%,70% 100%,30% 100%,30% 29%,22% 39%,6% 23%);
+  filter:drop-shadow(0 25px 25px rgba(0,0,0,.18));
+  position:relative;
+}
+.hero-shirt:after{
+  content:"SẮC MỘC";
+  position:absolute;
+  left:0;right:0;top:45%;
+  text-align:center;
+  font-family:Georgia,serif;
+  font-size:22px;
+  color:var(--green);
+  letter-spacing:2px;
+}
+.hero-note{
+  position:absolute;
+  right:25px;
+  bottom:25px;
+  background:rgba(255,253,249,.9);
+  padding:14px 16px;
+  border-radius:16px;
+  font-size:13px;
+  max-width:190px;
+}
+
+/* SECTION */
+section{padding:90px 0}
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:25px;
+  margin-bottom:35px;
+}
+.section-head h2{
+  font-family:Georgia,serif;
+  color:var(--green);
+  font-size:clamp(32px,4vw,48px);
+}
+.section-head p{max-width:500px;color:var(--muted)}
+
+/* COLLECTION */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.filter{
+  border:1px solid var(--line);
+  background:white;
+  color:#53615a;
+  padding:9px 15px;
+  border-radius:999px;
+  cursor:pointer;
+}
+.filter.active,.filter:hover{
+  background:var(--green);
+  color:white;
+  border-color:var(--green);
+}
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:0 8px 28px rgba(28,48,40,.05);
+  transition:.25s;
+}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.product-image{
+  height:290px;
+  background:linear-gradient(145deg,#ebe4d9,#d7ccbc);
+  position:relative;
+  overflow:hidden;
+}
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.image-placeholder{
+  width:100%;height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  color:#6b675f;
+  gap:8px;
+  text-align:center;
+  padding:20px;
+}
+.image-placeholder .mini-shirt{
+  width:105px;height:135px;
+  background:#f8f5ef;
+  clip-path:polygon(25% 8%,39% 0,61% 0,75% 8%,94% 23%,78% 39%,70% 29%,70% 100%,30% 100%,30% 29%,22% 39%,6% 23%);
+  filter:drop-shadow(0 10px 8px rgba(0,0,0,.14));
+}
+.badge{
+  position:absolute;
+  top:14px;left:14px;
+  background:rgba(24,60,49,.92);
+  color:white;
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:11px;
+  font-weight:700;
+}
+.card-body{padding:19px}
+.card-body .group{
+  color:var(--brown);
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-size:10px;
+  font-weight:700;
+}
+.card h3{font-family:Georgia,serif;font-size:24px;margin:4px 0}
+.card p{
+  color:var(--muted);
+  font-size:13px;
+  min-height:42px;
+}
+.card-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:16px;
+}
+.price{font-weight:800;color:var(--green)}
+.story-btn{
+  border:none;
+  background:#edf1ed;
+  color:var(--green);
+  padding:9px 12px;
+  border-radius:10px;
+  font-size:12px;
+  font-weight:700;
+}
+.story-btn:hover{background:#dfe8e1}
+
+/* NFC */
+.nfc{
+  background:var(--green);
+  color:white;
+  position:relative;
+  overflow:hidden;
+}
+.nfc .section-head h2{color:white}
+.nfc .section-head p{color:#cdd9d3}
+.nfc-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.nfc-box{
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.07);
+  border-radius:20px;
+  padding:28px;
+}
+.nfc-icon{
+  width:50px;height:50px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.12);
+  font-size:23px;
+  margin-bottom:18px;
+}
+.nfc-box h3{margin-bottom:8px}
+.nfc-box p{color:#cdd9d3;font-size:14px}
+
+/* ABOUT */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:45px;
+  align-items:center;
+}
+.about-card{
+  min-height:390px;
+  background:linear-gradient(145deg,#dcd0be,#bfa98d);
+  border-radius:35px;
+  display:grid;
+  place-items:center;
+  box-shadow:var(--shadow);
+}
+.about-card-inner{
+  width:70%;
+  border:1px solid rgba(255,255,255,.55);
+  padding:45px 25px;
+  text-align:center;
+  color:#fff;
+}
+.about-card-inner strong{
+  display:block;
+  font-family:Georgia,serif;
+  font-size:36px;
+  margin-bottom:8px;
+}
+.about-text h2{
+  font-family:Georgia,serif;
+  font-size:45px;
+  color:var(--green);
+  margin-bottom:20px;
+}
+.about-text p{color:var(--muted);margin-bottom:15px}
+
+/* CULTURAL NOTE */
+.note{
+  background:#eee7dc;
+  border:1px solid #dfd4c4;
+  border-radius:20px;
+  padding:22px;
+  margin-top:35px;
+  color:#5d625d;
+  font-size:13px;
+}
+.note strong{color:var(--green)}
+
+/* FOOTER */
+footer{
+  background:#102c24;
+  color:#d8e0dc;
+  padding:45px 0 25px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:40px;
+}
+footer h3{
+  color:white;
+  font-family:Georgia,serif;
+  margin-bottom:12px;
+  font-size:25px;
+}
+footer p,footer a{color:#aebdb6;font-size:13px}
+footer a{display:block;margin:7px 0}
+.copyright{
+  border-top:1px solid rgba(255,255,255,.1);
+  margin-top:35px;
+  padding-top:20px;
+  font-size:12px;
+  color:#82958d;
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(8,25,20,.72);
+  backdrop-filter:blur(7px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:100;
+}
+.modal.show{display:flex}
+.modal-card{
+  width:min(900px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:var(--paper);
+  border-radius:28px;
+  box-shadow:0 30px 90px rgba(0,0,0,.3);
+  position:relative;
+}
+.close{
+  position:absolute;
+  right:18px;
+  top:18px;
+  width:40px;height:40px;
+  border:none;
+  border-radius:50%;
+  background:white;
+  box-shadow:0 4px 15px rgba(0,0,0,.12);
+  font-size:22px;
+  color:var(--green);
+  z-index:2;
+}
+.story-content{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+}
+.story-image{
+  min-height:520px;
+  background:linear-gradient(145deg,#ddd0bd,#bba287);
+  display:grid;
+  place-items:center;
+}
+.story-shirt{
+  width:190px;height:245px;
+  background:#f6f1e7;
+  clip-path:polygon(25% 8%,39% 0,61% 0,75% 8%,94% 23%,78% 39%,70% 29%,70% 100%,30% 100%,30% 29%,22% 39%,6% 23%);
+  filter:drop-shadow(0 20px 20px rgba(0,0,0,.2));
+}
+.story-text{padding:45px 42px}
+.story-text .eyebrow{margin-bottom:8px}
+.story-text h2{
+  font-family:Georgia,serif;
+  font-size:42px;
+  color:var(--green);
+  margin-bottom:14px;
+}
+.story-text p{color:#606b64;font-size:14px;margin-bottom:16px}
+.story-tags{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0}
+.tag{
+  background:#edf1ed;
+  color:var(--green);
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:11px;
+}
+.story-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+
+/* ORDER */
+.order-card{padding:40px;max-width:560px;margin:auto}
+.order-card h2{
+  font-family:Georgia,serif;
+  font-size:36px;
+  color:var(--green);
+  margin-bottom:5px;
+}
+.order-product{
+  background:#f0ebe3;
+  padding:14px;
+  border-radius:13px;
+  margin:18px 0;
+  color:#53615a;
+}
+.form-grid{display:grid;gap:13px}
+label{font-size:12px;font-weight:700;color:#46564e}
+input,select,textarea{
+  width:100%;
+  border:1px solid var(--line);
+  background:white;
+  padding:12px 13px;
+  border-radius:11px;
+  outline:none;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--green)}
+textarea{min-height:90px;resize:vertical}
+.submit{
+  width:100%;
+  margin-top:8px;
+  border:none;
+  background:var(--green);
+  color:white;
+  padding:14px;
+  border-radius:12px;
+  font-weight:800;
+}
+.success{
+  display:none;
+  background:#e7f0e9;
+  color:#244b3b;
+  padding:15px;
+  border-radius:12px;
+  margin-top:12px;
+  font-size:13px;
+}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+  .products{grid-template-columns:repeat(3,1fr)}
+  .hero-inner{grid-template-columns:1fr}
+  .hero{padding:70px 0}
+  .hero-visual{min-height:400px}
+}
+@media(max-width:720px){
+  nav{display:none}
+  .nav{height:68px}
+  section{padding:65px 0}
+  .products{grid-template-columns:repeat(2,1fr)}
+  .nfc-grid,.about-grid,.footer-grid{grid-template-columns:1fr}
+  .section-head{display:block}
+  .section-head p{margin-top:10px}
+  .story-content{grid-template-columns:1fr}
+  .story-image{min-height:260px}
+  .story-text{padding:30px 24px}
+  .story-text h2{font-size:34px}
+}
+@media(max-width:480px){
+  .products{grid-template-columns:1fr}
+  .product-image{height:330px}
+  .hero h1{font-size:48px}
+  .hero-visual{min-height:330px}
+}
+</style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
-    <div class="logo">
-        SẮC MỘC
-        <span>CULTURAL STORIES</span>
-    </div>
-
+  <div class="container nav">
+    <a class="logo" href="#">
+      SẮC MỘC
+      <small>CULTURAL STORIES</small>
+    </a>
     <nav>
-        <a href="#story">CÂU CHUYỆN</a>
-        <a href="#tradition">TRUYỀN THỐNG</a>
-        <a href="#clothing">TRANG PHỤC</a>
-        <a href="#fabric">VẢI & DỆT</a>
+      <a href="#collection">Bộ sưu tập</a>
+      <a href="#nfc">NFC</a>
+      <a href="#about">Về Sắc Mộc</a>
+      <a href="#contact" class="nav-btn">Liên hệ</a>
     </nav>
+  </div>
 </header>
 
-
-<!-- HERO -->
+<main>
 
 <section class="hero">
-
-    <div class="hero-content">
-
-        <div class="small-title">
-            CÂU CHUYỆN VĂN HÓA
-        </div>
-
-        <h1>
-            Người <span>Tày</span>
-        </h1>
-
-        <p>
-            Một hành trình khám phá văn hóa, truyền thống,
-            trang phục và những giá trị được lưu giữ qua từng
-            sợi vải.
-        </p>
-
-        <a href="#story" class="hero-button">
-            BẮT ĐẦU KHÁM PHÁ ↓
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- STORY -->
-
-<section id="story">
-
-    <div class="story">
-
-        <div class="story-art"></div>
-
-        <div class="story-text">
-
-            <div class="section-label">
-                01 — CÂU CHUYỆN
-            </div>
-
-            <h2 class="section-title">
-                Văn hóa được kể bằng những điều rất đỗi bình dị.
-            </h2>
-
-            <p>
-                Văn hóa của người Tày được hình thành và trao truyền
-                qua đời sống cộng đồng, tiếng nói, phong tục,
-                nghệ thuật dân gian và những sinh hoạt gắn bó với
-                gia đình, bản làng.
-            </p>
-
-            <p>
-                Mỗi thế hệ tiếp nối không chỉ gìn giữ những giá trị
-                của cha ông mà còn tạo nên cách kể mới để văn hóa
-                tiếp tục hiện diện trong cuộc sống hôm nay.
-            </p>
-
-            <p>
-                Sắc Mộc được tạo ra như một không gian nhỏ để
-                những câu chuyện ấy được nhìn thấy, đọc và khám phá
-                theo một cách gần gũi hơn.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- MAIN TOPICS -->
-
-<section>
-
-    <div class="section-label">
-        KHÁM PHÁ
-    </div>
-
-    <h2 class="section-title">
-        Bốn lát cắt của<br>
-        văn hóa Tày.
-    </h2>
-
-    <p class="section-intro">
-        Từ những câu chuyện truyền thống đến đôi bàn tay tạo nên
-        từng tấm vải, mỗi chất liệu đều mang trong mình một phần
-        ký ức của cộng đồng.
-    </p>
-
-
-    <div class="cards">
-
-        <div class="card">
-
-            <div class="card-number">01</div>
-
-            <h3>
-                Câu chuyện
-            </h3>
-
-            <p>
-                Khám phá đời sống, cộng đồng và những câu chuyện
-                văn hóa được trao truyền qua các thế hệ.
-            </p>
-
-            <a href="#story">
-                KHÁM PHÁ →
-            </a>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-number">02</div>
-
-            <h3>
-                Truyền thống
-            </h3>
-
-            <p>
-                Tìm hiểu những thực hành văn hóa, âm nhạc,
-                lễ hội và đời sống tinh thần.
-            </p>
-
-            <a href="#tradition">
-                KHÁM PHÁ →
-            </a>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-number">03</div>
-
-            <h3>
-                Trang phục
-            </h3>
-
-            <p>
-                Tìm hiểu vẻ đẹp của trang phục truyền thống
-                và ý nghĩa của màu sắc, kiểu dáng, chất liệu.
-            </p>
-
-            <a href="#clothing">
-                KHÁM PHÁ →
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- TRADITION -->
-
-<section id="tradition" class="dark-section">
-
-    <div class="section-label">
-        02 — TRUYỀN THỐNG
-    </div>
-
-    <h2 class="section-title">
-        Những giá trị<br>
-        được truyền lại.
-    </h2>
-
-    <p class="section-intro">
-        Văn hóa không chỉ nằm trong những hiện vật được lưu giữ.
-        Văn hóa còn tồn tại trong âm thanh, nghi lễ, không gian
-        sống và những hoạt động diễn ra mỗi ngày.
-    </p>
-
-
-    <div class="tradition-grid">
-
-        <div class="tradition-item">
-
-            <h3>
-                Then
-            </h3>
-
-            <p>
-                Then là một hình thức nghệ thuật dân gian gắn với
-                đời sống tinh thần của nhiều cộng đồng Tày, Nùng
-                và Thái. Âm nhạc, lời hát và nghi lễ tạo nên một
-                không gian văn hóa đặc biệt.
-            </p>
-
-        </div>
-
-
-        <div class="tradition-item">
-
-            <h3>
-                Đàn tính
-            </h3>
-
-            <p>
-                Đàn tính gắn liền với nghệ thuật Then và trở thành
-                một hình ảnh quen thuộc trong đời sống văn hóa
-                của cộng đồng Tày.
-            </p>
-
-        </div>
-
-
-        <div class="tradition-item">
-
-            <h3>
-                Nhà sàn
-            </h3>
-
-            <p>
-                Không gian nhà ở truyền thống không chỉ đáp ứng
-                nhu cầu sinh hoạt mà còn gắn với cấu trúc gia đình
-                và đời sống cộng đồng.
-            </p>
-
-        </div>
-
-
-        <div class="tradition-item">
-
-            <h3>
-                Bản làng
-            </h3>
-
-            <p>
-                Không gian bản làng tạo nên sự kết nối giữa con người,
-                thiên nhiên và những sinh hoạt cộng đồng được
-                duy trì qua nhiều thế hệ.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CLOTHING -->
-
-<section id="clothing">
-
-    <div class="clothing">
-
-        <div class="clothing-visual">
-
-            <div class="cloth-shape">
-                <div class="cloth-pattern"></div>
-            </div>
-
-        </div>
-
-
-        <div>
-
-            <div class="section-label">
-                03 — TRANG PHỤC
-            </div>
-
-            <h2 class="section-title">
-                Sắc chàm<br>
-                trên từng nếp vải.
-            </h2>
-
-            <p class="section-intro">
-                Trang phục truyền thống là một phần quan trọng
-                trong việc thể hiện bản sắc văn hóa. Màu sắc,
-                kiểu dáng và cách sử dụng trang phục gắn với
-                đời sống và quan niệm thẩm mỹ của cộng đồng.
-            </p>
-
-
-            <div class="clothing-list">
-
-                <div>
-                    <strong>Áo chàm</strong>
-                    Gam màu chàm tạo nên vẻ đặc trưng và giản dị
-                    trong trang phục truyền thống.
-                </div>
-
-                <div>
-                    <strong>Kiểu dáng</strong>
-                    Những đường nét đơn giản nhưng tinh tế phản ánh
-                    sự phù hợp với đời sống và môi trường.
-                </div>
-
-                <div>
-                    <strong>Phụ kiện</strong>
-                    Các chi tiết đi kèm góp phần tạo nên tổng thể
-                    trang phục và thể hiện nét riêng của cộng đồng.
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- FABRIC -->
-
-<section id="fabric" class="fabric-section">
-
-    <div class="section-label">
-        04 — VẢI & NGHỀ DỆT
-    </div>
-
-    <h2 class="section-title">
-        Từ sợi vải<br>
-        đến câu chuyện.
-    </h2>
-
-    <p class="section-intro">
-        Một tấm vải không chỉ là vật liệu. Đằng sau nó là
-        nguyên liệu, kỹ thuật, thời gian và đôi bàn tay của
-        người làm ra nó.
-    </p>
-
-
-    <div class="fabric-process">
-
-        <div class="process">
-
-            <span>01 — SỢI</span>
-
-            <h3>
-                Nguyên liệu
-            </h3>
-
-            <p>
-                Tìm hiểu những loại sợi và nguyên liệu được sử dụng
-                trong quá trình tạo nên vải.
-            </p>
-
-        </div>
-
-
-        <div class="process">
-
-            <span>02 — DỆT</span>
-
-            <h3>
-                Khung dệt
-            </h3>
-
-            <p>
-                Những sợi riêng lẻ được kết nối để tạo nên
-                một mặt vải hoàn chỉnh.
-            </p>
-
-        </div>
-
-
-        <div class="process">
-
-            <span>03 — NHUỘM</span>
-
-            <h3>
-                Màu chàm
-            </h3>
-
-            <p>
-                Màu sắc trở thành một phần quan trọng tạo nên
-                diện mạo đặc trưng của trang phục.
-            </p>
-
-        </div>
-
-
-        <div class="process">
-
-            <span>04 — HOÀN THIỆN</span>
-
-            <h3>
-                Thành phẩm
-            </h3>
-
-            <p>
-                Tấm vải hoàn thiện tiếp tục được sử dụng để tạo nên
-                trang phục và các sản phẩm thủ công.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- QUOTE -->
-
-<section class="quote">
-
-    <div class="quote-content">
-
-        <div class="quote-mark">
-            “
-        </div>
-
-        <h2>
-            Khi một tấm vải được tạo ra,
-            một câu chuyện cũng được tiếp nối.
-        </h2>
-
-        <p>
-            SẮC MỘC — CÂU CHUYỆN VĂN HÓA DÂN TỘC TÀY
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer>
-
+  <div class="hero-inner">
     <div>
-
-        <h2>SẮC MỘC</h2>
-
-        <p>
-            Câu chuyện văn hóa dân tộc Tày.
-        </p>
-
+      <div class="eyebrow">Sắc Mộc · Cultural Stories</div>
+      <h1>Mặc một chiếc áo.<br><span>Kể một câu chuyện.</span></h1>
+      <p>
+        Sắc Mộc đưa cảm hứng văn hóa Việt Nam vào những thiết kế hiện đại,
+        để mỗi chiếc áo không chỉ là thời trang mà còn là một cách khám phá
+        câu chuyện phía sau di sản.
+      </p>
+      <div class="hero-actions">
+        <a href="#collection" class="btn btn-primary">Khám phá bộ sưu tập</a>
+        <a href="#nfc" class="btn btn-light">Tìm hiểu NFC</a>
+      </div>
     </div>
 
+    <div class="hero-visual">
+      <div class="hero-shirt"></div>
+      <div class="hero-note">
+        <strong>Nối dài di sản bằng công nghệ.</strong><br>
+        Mỗi sản phẩm có thể kết nối với một câu chuyện văn hóa riêng.
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="copyright">
-
-        <p>
-            VĂN HÓA · TRUYỀN THỐNG · CHẤT LIỆU
-        </p>
-
-        <p>
-            © 2026 Sắc Mộc
-        </p>
-
+<section id="collection">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">The first collection</div>
+        <h2>10 sắc màu văn hóa</h2>
+      </div>
+      <p>
+        Một bộ sưu tập áo phông lấy cảm hứng từ 10 cộng đồng dân tộc,
+        được thể hiện theo ngôn ngữ thời trang đương đại.
+      </p>
     </div>
 
+    <div class="filters">
+      <button class="filter active" data-filter="all">Tất cả</button>
+      <button class="filter" data-filter="mien-bac">Miền Bắc</button>
+      <button class="filter" data-filter="tay-bac">Tây Bắc</button>
+      <button class="filter" data-filter="tay-nguyen">Tây Nguyên</button>
+      <button class="filter" data-filter="nam-bo">Nam Bộ</button>
+      <button class="filter" data-filter="mien-trung">Miền Trung</button>
+    </div>
+
+    <div class="products" id="products"></div>
+
+    <div class="note">
+      <strong>Lưu ý về thiết kế:</strong>
+      Các sản phẩm Sắc Mộc là những diễn giải thời trang đương đại lấy cảm hứng
+      từ văn hóa và trang phục của các cộng đồng dân tộc. Trang phục truyền thống
+      có nhiều biến thể theo nhóm địa phương và cộng đồng; vì vậy Sắc Mộc không
+      gọi áo phông này là “trang phục truyền thống” hay khẳng định một mẫu duy nhất
+      đại diện cho toàn bộ cộng đồng.
+    </div>
+  </div>
+</section>
+
+<section class="nfc" id="nfc">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" style="color:#bfa17f">Technology × Heritage</div>
+        <h2>Chạm để mở câu chuyện</h2>
+      </div>
+      <p>
+        Theo định hướng của Sắc Mộc, NFC là cầu nối giữa sản phẩm vật lý
+        và nội dung văn hóa trên môi trường số.
+      </p>
+    </div>
+
+    <div class="nfc-grid">
+      <div class="nfc-box">
+        <div class="nfc-icon">◉</div>
+        <h3>1. Chạm</h3>
+        <p>Đưa điện thoại có NFC đến vị trí tag trên sản phẩm khi tính năng NFC đã được cấu hình.</p>
+      </div>
+      <div class="nfc-box">
+        <div class="nfc-icon">↗</div>
+        <h3>2. Kết nối</h3>
+        <p>Tag có thể dẫn đến một đường dẫn nội dung riêng của sản phẩm và cộng đồng văn hóa.</p>
+      </div>
+      <div class="nfc-box">
+        <div class="nfc-icon">✦</div>
+        <h3>3. Khám phá</h3>
+        <p>Từ màu sắc, họa tiết đến câu chuyện phía sau thiết kế — tất cả được kể trong một trải nghiệm số.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-card">
+      <div class="about-card-inner">
+        <strong>SẮC MỘC</strong>
+        <span>Nối dài di sản bằng công nghệ</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="eyebrow">Our idea</div>
+      <h2>Văn hóa có thể được mặc theo một cách mới.</h2>
+      <p>
+        Sắc Mộc xây dựng trải nghiệm kết hợp giữa văn hóa, thời trang và công nghệ.
+        Mỗi thiết kế bắt đầu từ một câu chuyện, sau đó được chuyển hóa thành
+        ngôn ngữ hình ảnh phù hợp với sản phẩm hiện đại.
+      </p>
+      <p>
+        Website này là một không gian bán hàng kết hợp storytelling:
+        người xem có thể chọn áo, tìm hiểu câu chuyện của cộng đồng được lấy cảm hứng,
+        sau đó tiến tới bước đặt hàng.
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>SẮC MỘC</h3>
+        <p>Nối dài di sản bằng công nghệ.</p>
+        <p style="margin-top:10px">
+          Thời trang đương đại lấy cảm hứng từ những câu chuyện văn hóa.
+        </p>
+      </div>
+      <div>
+        <h3>Khám phá</h3>
+        <a href="#collection">Bộ sưu tập</a>
+        <a href="#nfc">Công nghệ NFC</a>
+        <a href="#about">Về Sắc Mộc</a>
+      </div>
+      <div>
+        <h3>Liên hệ</h3>
+        <p>Thông tin liên hệ công khai sẽ được bổ sung khi Sắc Mộc có kênh chính thức.</p>
+        <p style="margin-top:8px">Không hiển thị thông tin cá nhân hoặc dữ liệu nội bộ trên website.</p>
+      </div>
+    </div>
+    <div class="copyright">© 2026 Sắc Mộc. All rights reserved.</div>
+  </div>
 </footer>
+
+<!-- STORY MODAL -->
+<div class="modal" id="storyModal">
+  <div class="modal-card">
+    <button class="close" onclick="closeModal('storyModal')">×</button>
+    <div class="story-content">
+      <div class="story-image">
+        <div class="story-shirt"></div>
+      </div>
+      <div class="story-text">
+        <div class="eyebrow" id="storyEyebrow"></div>
+        <h2 id="storyTitle"></h2>
+        <p id="storyIntro"></p>
+        <p id="storyBody"></p>
+        <div class="story-tags" id="storyTags"></div>
+        <div class="story-actions">
+          <button class="btn btn-primary" id="storyBuy">Đặt áo này</button>
+          <button class="btn btn-light" onclick="closeModal('storyModal')">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER MODAL -->
+<div class="modal" id="orderModal">
+  <div class="modal-card order-card">
+    <button class="close" onclick="closeModal('orderModal')">×</button>
+    <div class="eyebrow">Order</div>
+    <h2>Đặt áo</h2>
+    <div class="order-product" id="orderProduct"></div>
+
+    <form id="orderForm">
+      <div class="form-grid">
+        <div>
+          <label>Họ và tên</label>
+          <input required id="customerName" placeholder="Nhập họ và tên">
+        </div>
+        <div>
+          <label>Số điện thoại</label>
+          <input required id="customerPhone" placeholder="Nhập số điện thoại">
+        </div>
+        <div>
+          <label>Kích thước</label>
+          <select id="customerSize">
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+            <option>XXL</option>
+          </select>
+        </div>
+        <div>
+          <label>Ghi chú</label>
+          <textarea id="customerNote" placeholder="Màu sắc, số lượng hoặc yêu cầu khác..."></textarea>
+        </div>
+        <button class="submit" type="submit">Xác nhận yêu cầu đặt áo</button>
+        <div class="success" id="successMessage">
+          Giao diện đã ghi nhận thông tin. Đây đang là bản website tĩnh,
+          nên chưa gửi đơn đến hệ thống bán hàng. Khi có kênh nhận đơn chính thức,
+          có thể nối form này với Google Sheets / hệ thống đặt hàng.
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+const products = [
+  {
+    id:"kinh", name:"Áo Kinh", group:"Kinh", region:"mien-bac",
+    desc:"Thiết kế mở đầu bộ sưu tập với cảm hứng từ văn hóa Việt.",
+    story:"Người Kinh là cộng đồng dân tộc có số dân lớn nhất Việt Nam. Trong bộ sưu tập Sắc Mộc, thiết kế Kinh được định hướng như một điểm kết nối với những giá trị văn hóa Việt Nam quen thuộc, được chuyển hóa sang ngôn ngữ áo phông hiện đại.",
+    tags:["Kinh","Việt Nam","Đương đại"]
+  },
+  {
+    id:"tay", name:"Áo Tày", group:"Tày", region:"mien-bac",
+    desc:"Cảm hứng từ sắc chàm và chất liệu dệt truyền thống.",
+    story:"Trang phục truyền thống của người Tày thường gắn với màu chàm. Nhiều tư liệu văn hóa ghi nhận vải bông tự dệt và nhuộm chàm là chất liệu, màu sắc quen thuộc trong trang phục Tày. Sắc Mộc chuyển cảm hứng ấy thành một thiết kế áo phông tối giản.",
+    tags:["Tày","Màu chàm","Dệt vải"]
+  },
+  {
+    id:"thai", name:"Áo Thái", group:"Thái", region:"tay-bac",
+    desc:"Cảm hứng từ xửa cóm, váy và những đường nét đặc trưng.",
+    story:"Trang phục của người Thái có nhiều biến thể giữa các nhóm như Thái Đen và Thái Trắng. Trang phục nữ có thể gồm áo xửa cóm, váy, thắt lưng và khăn piêu. Thiết kế Sắc Mộc lấy cảm hứng từ hệ màu và đường nét trang phục, không tái tạo nguyên mẫu trang phục truyền thống.",
+    tags:["Thái","Xửa cóm","Tây Bắc"]
+  },
+  {
+    id:"tho", name:"Áo Thổ", group:"Thổ", region:"mien-bac",
+    desc:"Lấy cảm hứng từ họa tiết thổ cẩm và trang phục truyền thống.",
+    story:"Trang phục truyền thống của người Thổ có nhiều dạng theo từng cộng đồng địa phương. Một số bộ trang phục nữ nổi bật với váy, áo và các chi tiết dệt có hoa văn. Sắc Mộc sử dụng tinh thần của màu sắc và hoa văn dệt để tạo nên phiên bản áo phông hiện đại.",
+    tags:["Thổ","Thổ cẩm","Hoa văn"]
+  },
+  {
+    id:"ede", name:"Áo Ê Đê", group:"Ê Đê", region:"tay-nguyen",
+    desc:"Cảm hứng từ màu chàm, hình học và thiên nhiên Tây Nguyên.",
+    story:"Trang phục truyền thống Ê Đê có áo và váy, với hoa văn lấy cảm hứng từ thiên nhiên và các dạng hình học. Sắc Mộc chọn lọc những đặc trưng thị giác này để xây dựng một thiết kế hiện đại, thay vì sao chép nguyên mẫu trang phục truyền thống.",
+    tags:["Ê Đê","Tây Nguyên","Hình học"]
+  },
+  {
+    id:"khmer", name:"Áo Khmer", group:"Khmer (Khơ-me)", region:"nam-bo",
+    desc:"Cảm hứng từ văn hóa Khmer Nam Bộ và ngôn ngữ hoa văn.",
+    story:"Thiết kế Khmer của Sắc Mộc lấy cảm hứng từ không gian văn hóa Khmer Nam Bộ và cách biểu đạt hoa văn trong đời sống văn hóa. Đây là một diễn giải thời trang đương đại; sản phẩm không được giới thiệu như một bộ phận của trang phục truyền thống Khmer.",
+    tags:["Khmer","Khơ-me","Nam Bộ"]
+  },
+  {
+    id:"hmong", name:"Áo H’Mông", group:"H’Mông", region:"mien-bac",
+    desc:"Cảm hứng từ vải lanh, chàm, thêu và bảng màu vùng cao.",
+    story:"Trang phục H’Mông có nhiều biến thể giữa các nhóm như H’Mông Trắng, H’Mông Hoa và H’Mông Đen. Các chất liệu và kỹ thuật được nhắc đến trong tư liệu gồm bông, lanh, lụa, nhuộm chàm, thêu và sử dụng trang sức. Sắc Mộc chọn một phần ngôn ngữ thị giác này cho áo phông.",
+    tags:["H’Mông","Lanh","Thêu"]
+  },
+  {
+    id:"dao", name:"Áo Dao", group:"Dao", region:"mien-bac",
+    desc:"Lấy cảm hứng từ sắc chàm và chi tiết trang trí Dao.",
+    story:"Người Dao có nhiều nhóm địa phương với trang phục khác nhau. Ví dụ, trang phục phụ nữ Dao Đỏ thường có nền chàm và các mảng màu đỏ, trắng, vàng, đen cùng kỹ thuật thêu. Thiết kế này ghi rõ cảm hứng từ hệ màu Dao, không khẳng định là mẫu đại diện cho toàn bộ các nhóm Dao.",
+    tags:["Dao","Dao Đỏ","Chàm"]
+  },
+  {
+    id:"muong", name:"Áo Mường", group:"Mường", region:"mien-bac",
+    desc:"Cảm hứng từ cạp váy và hoa văn dệt của người Mường.",
+    story:"Trang phục phụ nữ Mường có nhiều thành phần, trong đó váy và phần cạp váy với hoa văn dệt là những chi tiết nổi bật. Trang phục truyền thống hiện nay thường xuất hiện trong lễ hội và những dịp quan trọng. Sắc Mộc chuyển cảm hứng hoa văn ấy vào một thiết kế áo phông.",
+    tags:["Mường","Cạp váy","Dệt"]
+  },
+  {
+    id:"taoi", name:"Áo Tà Ôi", group:"Tà Ôi", region:"mien-trung",
+    desc:"Cảm hứng từ zèng — nghệ thuật dệt truyền thống của Tà Ôi.",
+    story:"Nghề dệt zèng của người Tà Ôi nổi bật với những hoa văn dệt phức tạp và có vai trò trong đời sống văn hóa cộng đồng. Sắc Mộc lấy cảm hứng từ tinh thần của zèng và hệ thống hoa văn để tạo một sản phẩm thời trang hiện đại.",
+    tags:["Tà Ôi","Zèng","A Lưới"]
+  }
+];
+
+const productsEl = document.getElementById("products");
+let currentProduct = null;
+
+function renderProducts(filter="all"){
+  productsEl.innerHTML = "";
+  products
+    .filter(p => filter === "all" || p.region === filter)
+    .forEach(p => {
+      const card = document.createElement("article");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="product-image">
+          <span class="badge">CULTURAL STORY</span>
+          <div class="image-placeholder">
+            <div class="mini-shirt"></div>
+            <small>Thêm ảnh tại: images/ao-${p.id}.jpg</small>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="group">${p.group}</div>
+          <h3>${p.name}</h3>
+          <p>${p.desc}</p>
+          <div class="card-bottom">
+            <span class="price">Liên hệ</span>
+            <button class="story-btn" onclick="openStory('${p.id}')">Khám phá câu chuyện →</button>
+          </div>
+        </div>
+      `;
+      card.querySelector(".product-image").addEventListener("click",()=>openStory(p.id));
+      productsEl.appendChild(card);
+    });
+}
+
+document.querySelectorAll(".filter").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    renderProducts(btn.dataset.filter);
+  });
+});
+
+function openStory(id){
+  currentProduct = products.find(p=>p.id===id);
+  if(!currentProduct) return;
+
+  document.getElementById("storyEyebrow").textContent = currentProduct.group;
+  document.getElementById("storyTitle").textContent = currentProduct.name;
+  document.getElementById("storyIntro").textContent = currentProduct.desc;
+  document.getElementById("storyBody").textContent = currentProduct.story;
+  document.getElementById("storyTags").innerHTML =
+    currentProduct.tags.map(t=>`<span class="tag">${t}</span>`).join("");
+
+  document.getElementById("storyBuy").onclick = ()=>{
+    closeModal("storyModal");
+    openOrder(currentProduct.id);
+  };
+
+  document.getElementById("storyModal").classList.add("show");
+  document.body.style.overflow="hidden";
+}
+
+function openOrder(id){
+  currentProduct = products.find(p=>p.id===id);
+  document.getElementById("orderProduct").innerHTML =
+    `<strong>${currentProduct.name}</strong><br>${currentProduct.group}<br><small>Giá bán công khai sẽ được cập nhật khi Sắc Mộc chốt giá.</small>`;
+  document.getElementById("successMessage").style.display="none";
+  document.getElementById("orderForm").reset();
+  document.getElementById("orderModal").classList.add("show");
+  document.body.style.overflow="hidden";
+}
+
+function closeModal(id){
+  document.getElementById(id).classList.remove("show");
+  if(!document.querySelector(".modal.show")) document.body.style.overflow="";
+}
+
+document.querySelectorAll(".modal").forEach(modal=>{
+  modal.addEventListener("click",e=>{
+    if(e.target===modal) closeModal(modal.id);
+  });
+});
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    document.querySelectorAll(".modal.show").forEach(m=>closeModal(m.id));
+  }
+});
+
+document.getElementById("orderForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  document.getElementById("successMessage").style.display="block";
+});
+
+renderProducts();
+</script>
 
 </body>
 </html>
